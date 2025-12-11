@@ -64,11 +64,6 @@ eksctl create cluster --name project1-cluster --region ap-south-1 --nodes 2 --no
 aws eks update-kubeconfig --region ap-south-1 --name project1-cluster
 ```
 
-**Apply Kubernetes manifests:**
-```bash
-kubectl apply -f deployment.yaml -f service.yaml
-```
-
 ---
 
 ### 6. CI/CD Pipeline
@@ -111,4 +106,3 @@ kubectl get svc brain-tasks-svc -o wide
 - Kubernetes service maps **port 80 → container port 3000**.
 - `appspec.yaml` is not required unless using **CodeDeploy lifecycle hooks**.
 
-Would you like me to also add a **diagram** (architecture flow: Developer → ECR → EKS → LoadBalancer → User) to visually explain the deployment pipeline? That would make the README even more recruiter/demo-friendly.
