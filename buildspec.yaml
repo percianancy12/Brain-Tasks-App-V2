@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      # Use explicit region instead of $AWS_DEFAULT_REGION unless you set it in CodeBuild
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 043206426566.dkr.ecr.ap-south-1.amazonaws.com
+
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t brain-tasks-app-v2 .
+      - echo Tagging the image for ECR...
+      - docker tag brain-tasks-app-v2:latest 043206426566.dkr.ecr.ap-south-1.amazonaws.com/project1-v2-ecr-repo:latest
+
+  post_build:
+    commands:
+      - echo Pushing the Docker image to ECR...
+      - docker push 043206426566.dkr.ecr.ap-south-1.amazonaws.com/project1-v2-ecr-repo:latest

@@ -1,0 +1,9 @@
+version: 0.0
+resources:
+  - myAppEKS:
+      type: Kubernetes
+      properties:
+        clusterName: project1-cluster
+        manifestPaths:
+          - deployment.yaml
+          - service.yaml
