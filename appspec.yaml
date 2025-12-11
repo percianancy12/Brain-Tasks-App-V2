@@ -3,7 +3,7 @@ resources:
   - myAppEKS:
       type: Kubernetes
       properties:
-        clusterName: project1-cluster
+        clusterName: project1-v2-cluster
         manifestPaths:
           - deployment.yaml
           - service.yaml
